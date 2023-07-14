@@ -1,0 +1,113 @@
+{
+  "coffees": [
+    {
+      "id": 1,
+      "name": "Espresso",
+      "description": "A concentrated coffee beverage brewed by forcing a small amount of nearly boiling water under pressure through finely ground coffee beans.",
+      "price": 2.99,
+      "image": "espresso.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Cappuccino",
+      "description": "An espresso-based coffee drink that originated in Italy. It is traditionally composed of equal parts double espresso, steamed milk, and milk foam.",
+      "price": 3.49,
+      "image": "cappuccino.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Latte",
+      "description": "A coffee drink made with espresso and steamed milk. It is usually topped with a small amount of foam.",
+      "price": 3.99,
+      "image": "latte.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Mocha",
+      "description": "A chocolate-flavored variant of a latte. It is made with espresso, hot milk, and chocolate syrup.",
+      "price": 4.29,
+      "image": "mocha.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Americano",
+      "description": "A type of coffee drink prepared by diluting an espresso shot with hot water, giving it a similar strength to, but different flavor from, regular drip coffee.",
+      "price": 2.79,
+      "image": "americano.jpg"
+    }
+  ],
+  "desserts": [
+    {
+      "id": 1,
+      "name": "Cheesecake",
+      "description": "A sweet dessert consisting of one or more layers. The main, and thickest, layer consists of a mixture of soft, fresh cheese, eggs, and sugar.",
+      "price": 4.99,
+      "image": "cheesecake.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Chocolate Brownie",
+      "description": "A dense, chocolatey dessert that is often served warm and topped with ice cream or whipped cream.",
+      "price": 3.49,
+      "image": "brownie.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Apple Pie",
+      "description": "A classic pie filled with sliced apples, sugar, and spices, and often served with a scoop of vanilla ice cream.",
+      "price": 3.99,
+      "image": "apple_pie.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Strawberry Shortcake",
+      "description": "A sweet dessert made with layers of sponge cake, fresh strawberries, and whipped cream.",
+      "price": 4.29,
+      "image": "strawberry_shortcake.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Tiramisu",
+      "description": "An Italian dessert consisting of layers of coffee-soaked ladyfingers and a sweet cream filling, flavored with cocoa.",
+      "price": 3.79,
+      "image": "tiramisu.jpg"
+    }
+  ],
+  "drinks": [
+    {
+      "id": 1,
+      "name": "Iced Tea",
+      "description": "A refreshing beverage made by steeping tea leaves in cold water and served chilled.",
+      "price": 2.49,
+      "image": "iced_tea.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Lemonade",
+      "description": "A sweet and tangy drink made from freshly squeezed lemons, sugar, and water.",
+      "price": 2.99,
+      "image": "lemonade.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Smoothie",
+      "description": "A blended drink made from a combination of fruits, yogurt, and ice.",
+      "price": 3.99,
+      "image": "smoothie.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Hot Chocolate",
+      "description": "A rich and creamy chocolate drink often topped with whipped cream and chocolate shavings.",
+      "price": 3.49,
+      "image": "hot_chocolate.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Mojito",
+      "description": "A refreshing cocktail made with rum, lime juice, mint leaves, sugar, and soda water.",
+      "price": 5.49,
+      "image": "mojito.jpg"
+    }
+  ]
+}
