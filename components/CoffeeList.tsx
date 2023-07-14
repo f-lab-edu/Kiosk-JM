@@ -7,7 +7,7 @@ function CoffeeList() {
         <div className="w-[195px] h-[287px] left-[432px] top-[344px] absolute">
           <img
             className="w-[195px] h-[195.99px] left-0 top-0 absolute rounded-[20px]"
-            src={coffee.image}
+            src="/americano.png"
           />
           <div className="left-[10px] top-[204px] absolute text-black text-xl font-semibold leading-7">
             {coffee.name}
