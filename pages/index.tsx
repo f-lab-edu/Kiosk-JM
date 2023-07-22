@@ -1,9 +1,6 @@
 import Cart from "@/components/Cart";
 import CoffeeList from "@/components/CoffeeList";
 import Navbar from "@/components/Navbar";
-import { ButtonLink } from "@/components/ui/ButtonLink";
-import { buttonVariants } from "@/components/ui/button";
-import Link from "next/link";
 
 export default function Home() {
   return (
