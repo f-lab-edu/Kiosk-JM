@@ -4,7 +4,7 @@ function Cart() {
   return (
     <>
       <div className="left-[235px] top-[260px] absolute text-black text-[40px] font-bold leading-[48px]">
-        Coffee1
+        Coffee
       </div>
       <div className="w-[842px] h-44 left-0 top-[1048px] absolute bg-zinc-300 rounded-[20px]" />
       <div className="left-[451px] top-[1110px] absolute text-black text-opacity-50 text-lg font-semibold leading-7">

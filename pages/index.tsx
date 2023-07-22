@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="w-[842px] h-[1224px] relative bg-white rounded-[30px] mx-auto relative">
+    <div className="w-[842px] h-[1224px] bg-white rounded-[30px] mx-auto absolute">
       <Navbar />
       <Cart />
       <CoffeeList />
