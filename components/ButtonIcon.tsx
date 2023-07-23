@@ -1,15 +1,16 @@
-import { ChevronRight, Minus, Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
-export function ButtonIcon() {
+export function ButtonIcon({ onCountChange, price }) {
   const [count, setCount] = useState(0);
   const plusHandler = function () {
     setCount((prev) => prev + 1);
+    onCountChange(count + 1, price);
   };
   const minusHandler = function () {
-    setCount((prev) => prev - 1);
+    setCount((prev) => (prev > 0 ? prev - 1 : prev));
   };
 
   return (

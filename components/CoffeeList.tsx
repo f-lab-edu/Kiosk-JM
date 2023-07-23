@@ -4,10 +4,16 @@ import ButtonIcon from "./ButtonIcon";
 import Image from "next/image";
 
 function CoffeeList() {
+  const countChangeHandler = function (newCount, price) {
+    console.log(newCount * price);
+  };
   return (
-    <div className="flex flex-wrap justify-between absolute left-[216px] top-[344px]">
-      {productList.coffees.map((coffee) => (
-        <>
+    <>
+      <div className="left-[235px] top-[260px] absolute text-black text-[40px] font-bold leading-[48px]">
+        Coffee
+      </div>
+      <div className="flex flex-wrap justify-between absolute left-[216px] top-[344px]">
+        {productList.coffees.map((coffee) => (
           <div key={coffee.id} className="w-[195px] h-[287px] relative  mb-4">
             <Link href={coffee.name}>
               <Image
@@ -26,12 +32,15 @@ function CoffeeList() {
               </div>
             </Link>
             <div className="absolute right-[5px] bottom-[5px]">
-              <ButtonIcon />
+              <ButtonIcon
+                onCountChange={countChangeHandler}
+                price={coffee.price}
+              />
             </div>
           </div>
-        </>
-      ))}
-    </div>
+        ))}
+      </div>
+    </>
   );
 }
 

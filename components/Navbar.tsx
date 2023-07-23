@@ -1,19 +1,10 @@
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuLink,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@radix-ui/react-navigation-menu";
 import Link from "next/link";
-import { ButtonLink } from "./ui/ButtonLink";
 import { Button } from "./ui/button";
 
 function Navbar() {
   return (
     <>
-      <nav className="absolute w-[216px] fixed left-0 top-[225px] flex flex-col items-center">
+      <nav className="w-[216px] absolute left-0 top-[225px] flex flex-col items-center">
         <Button
           asChild
           variant="ghost"
