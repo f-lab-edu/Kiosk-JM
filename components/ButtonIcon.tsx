@@ -1,28 +1,17 @@
 import { Minus, Plus } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 
-export function ButtonIcon({ onCountChange, price }) {
-  const [count, setCount] = useState(0);
-  const plusHandler = function () {
-    setCount((prev) => prev + 1);
-    onCountChange(count + 1, price);
-  };
-  const minusHandler = function () {
-    setCount((prev) => (prev > 0 ? prev - 1 : prev));
-  };
-
+export function ButtonIcon({ currentCount, onPlus, onMinus, id }) {
   return (
-    <>
-      <Button variant="outline" size="icon" onClick={minusHandler}>
+    <div id={id}>
+      <Button variant="outline" size="icon" onClick={onMinus}>
         <Minus className="h-4 w-4" />
       </Button>
-      {count}
-      <Button variant="outline" size="icon" onClick={plusHandler}>
+      {currentCount}
+      <Button variant="outline" size="icon" onClick={onPlus}>
         <Plus className="h-4 w-4" />
       </Button>
-    </>
+    </div>
   );
 }
 export default ButtonIcon;

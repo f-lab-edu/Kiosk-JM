@@ -8,10 +8,10 @@ export default function Home() {
     <div className="w-[842px] h-[1224px] bg-white rounded-[30px] absolute mx-auto">
       <Image
         className="left-0 top-0 absolute"
-        src="/img10.png"
+        src="/BackgroundImg.png"
         width={843}
         height={225}
-        alt="img10"
+        alt="BackgroundImg"
       />
       <Navbar />
       <Cart />
