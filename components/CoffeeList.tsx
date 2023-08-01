@@ -1,7 +1,7 @@
 import productList from "../pages/api/productList.json";
 import CoffeeItem from "./CoffeeItem";
 
-function CoffeeList() {
+function CoffeeList({ count, onPlus, onMinus }) {
   return (
     <>
       <div className="left-[235px] top-[260px] absolute text-black text-[40px] font-bold leading-[48px]">
@@ -14,6 +14,9 @@ function CoffeeList() {
             name={coffee.name}
             price={coffee.price}
             key={coffee.id}
+            count={count}
+            onPlus={onPlus}
+            onMinus={onMinus}
           />
         ))}
       </div>

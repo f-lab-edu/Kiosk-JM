@@ -1,8 +1,12 @@
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { useState } from "react";
+import productList from "../pages/api/productList.json";
 
-function Cart() {
+function Cart({ count }) {
+  const totalPrice = productList.coffees.reduce((total, coffee) => {
+    return total + count[coffee.id] * coffee.price;
+  }, 0);
   return (
     <>
       <div
@@ -19,7 +23,10 @@ function Cart() {
             Total
           </div>
           <div className="text-3xl font-semibold leading-none">
-            {/*Todo : show total price*/ "$" + "0.00"}
+            {new Intl.NumberFormat("en-US", {
+              style: "currency",
+              currency: "USD",
+            }).format(totalPrice)}
           </div>
         </div>
         <Button className="w-[173px] h-[145px] bg-amber-300 rounded-[30px] text-black text-2xl font-bold">

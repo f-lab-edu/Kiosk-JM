@@ -2,8 +2,36 @@ import Cart from "@/components/Cart";
 import CoffeeList from "@/components/CoffeeList";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import { useState } from "react";
+import productList from "./api/productList.json";
 
 export default function Home() {
+  const [count, setCount] = useState(
+    productList.coffees.reduce((state, coffee) => {
+      state[coffee.id] = 0;
+      return state;
+    }, {})
+  );
+  console.log(count);
+  const plusHandler = function (id) {
+    setCount((prevCount) => {
+      return {
+        ...prevCount,
+        [id]: prevCount[id] + 1,
+      };
+    });
+  };
+  const minusHandler = function (id) {
+    setCount((prevCount) => {
+      if (count[id] <= 0) return prevCount;
+
+      return {
+        ...prevCount,
+        [id]: prevCount[id] - 1,
+      };
+    });
+  };
+
   return (
     <div className="w-[842px] h-[1224px] bg-white rounded-[30px] absolute mx-auto">
       <Image
@@ -14,8 +42,8 @@ export default function Home() {
         alt="BackgroundImg"
       />
       <Navbar />
-      <Cart />
-      <CoffeeList />
+      <Cart count={count} />
+      <CoffeeList count={count} onPlus={plusHandler} onMinus={minusHandler} />
     </div>
   );
 }

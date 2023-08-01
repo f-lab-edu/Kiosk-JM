@@ -1,14 +1,14 @@
 import { Minus, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-export function ButtonIcon({ currentCount, onPlus, onMinus, id }) {
+function ButtonIcon({ count, onPlus, onMinus, id }) {
   return (
     <div id={id}>
-      <Button variant="outline" size="icon" onClick={onMinus}>
+      <Button variant="outline" size="icon" onClick={() => onMinus(id)}>
         <Minus className="h-4 w-4" />
       </Button>
-      {currentCount}
-      <Button variant="outline" size="icon" onClick={onPlus}>
+      {count[id]}
+      <Button variant="outline" size="icon" onClick={() => onPlus(id)}>
         <Plus className="h-4 w-4" />
       </Button>
     </div>

@@ -3,15 +3,7 @@ import Link from "next/link";
 import ButtonIcon from "./ButtonIcon";
 import { useState } from "react";
 
-function CoffeeItem({ id, name, price }) {
-  const [count, setCount] = useState(0);
-  console.log(count * price);
-  const plusHandler = function () {
-    setCount((prev) => prev + 1);
-  };
-  const minusHandler = function () {
-    setCount((prev) => (prev > 0 ? prev - 1 : prev));
-  };
+function CoffeeItem({ id, name, price, count, onPlus, onMinus }) {
   return (
     <div className="w-[195px] h-[287px] relative mb-4">
       <Link href={name}>
@@ -35,9 +27,9 @@ function CoffeeItem({ id, name, price }) {
       </Link>
       <div className="absolute right-[5px] bottom-[5px]">
         <ButtonIcon
-          onPlus={plusHandler}
-          onMinus={minusHandler}
-          currentCount={count}
+          onPlus={() => onPlus(id)}
+          onMinus={() => onMinus(id)}
+          count={count}
           id={id}
         />
       </div>
