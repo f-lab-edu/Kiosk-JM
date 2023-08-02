@@ -10,28 +10,28 @@ function Navbar() {
           variant="ghost"
           className="w-[216px] h-[118px] text-xl font-semibold leading-7"
         >
-          <Link href="/Best">Best</Link>
+          <Link href="/best">Best</Link>
         </Button>
         <Button
           asChild
           variant="ghost"
           className="w-[216px] h-[118px] text-xl font-semibold leading-7"
         >
-          <Link href="/">Coffee</Link>
+          <Link href="/coffees">Coffee</Link>
         </Button>
         <Button
           asChild
           variant="ghost"
           className="w-[216px] h-[118px] text-xl font-semibold leading-7"
         >
-          <Link href="/Dessert">Dessert</Link>
+          <Link href="/desserts">Dessert</Link>
         </Button>
         <Button
           asChild
           variant="ghost"
           className="w-[216px] h-[118px] text-xl font-semibold leading-7"
         >
-          <Link href="/Drink">Drink</Link>
+          <Link href="/drinks">Drink</Link>
         </Button>
       </nav>
     </>

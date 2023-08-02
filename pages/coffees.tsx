@@ -2,28 +2,34 @@ import Cart from "@/components/Cart";
 import CoffeeList from "@/components/CoffeeList";
 import Navbar from "@/components/Navbar";
 import Image from "next/image";
+import { useState } from "react";
 import productList from "./api/productList.json";
-import { useImmerReducer } from "use-immer";
-import cartReducer from "../components/cartReducer";
-
-const initialState = productList.coffees.reduce((state, coffee) => {
-  state[coffee.id] = 0;
-  return state;
-}, {});
+import { useRouter } from "next/router";
 
 export default function Home() {
-  const [count, dispatch] = useImmerReducer(cartReducer, initialState);
+  const [count, setCount] = useState(
+    productList.coffees.reduce((state, coffee) => {
+      state[coffee.id] = 0;
+      return state;
+    }, {})
+  );
 
   const plusHandler = function (id) {
-    dispatch({
-      type: "count up",
-      id: id,
+    setCount((prevCount) => {
+      return {
+        ...prevCount,
+        [id]: prevCount[id] + 1,
+      };
     });
   };
   const minusHandler = function (id) {
-    dispatch({
-      type: "count down",
-      id: id,
+    setCount((prevCount) => {
+      if (count[id] <= 0) return prevCount;
+
+      return {
+        ...prevCount,
+        [id]: prevCount[id] - 1,
+      };
     });
   };
 

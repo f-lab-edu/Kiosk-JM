@@ -34,6 +34,13 @@
       "description": "A type of coffee drink prepared by diluting an espresso shot with hot water, giving it a similar strength to, but different flavor from, regular drip coffee.",
       "price": 2.79,
       "image": "americano.png"
+    },
+    {
+      "id": 6,
+      "name": "Iced Americano",
+      "description": "An Iced Americano is an Americano served over ice: espresso, cold water (optional), and ice. You can dilute it with cold water, or simply let the ice do the diluting",
+      "price": 2.79,
+      "image": "iced_americano.png"
     }
   ],
   "desserts": [
@@ -108,6 +115,43 @@
       "description": "A refreshing cocktail made with rum, lime juice, mint leaves, sugar, and soda water.",
       "price": 5.49,
       "image": "mojito.png"
+    }
+  ],
+  "best": [
+    {
+      "id": 1,
+      "name": "Americano",
+      "description": "A type of coffee drink prepared by diluting an espresso shot with hot water, giving it a similar strength to, but different flavor from, regular drip coffee.",
+      "price": 2.79,
+      "image": "americano.png"
+    },
+    {
+      "id": 2,
+      "name": "Iced Americano",
+      "description": "An Iced Americano is an Americano served over ice: espresso, cold water (optional), and ice. You can dilute it with cold water, or simply let the ice do the diluting",
+      "price": 2.79,
+      "image": "iced_americano.png"
+    },
+    {
+      "id": 3,
+      "name": "Chocolate Brownie",
+      "description": "A dense, chocolatey dessert that is often served warm and topped with ice cream or whipped cream.",
+      "price": 3.49,
+      "image": "brownie.png"
+    },
+    {
+      "id": 4,
+      "name": "Hot Chocolate",
+      "description": "A rich and creamy chocolate drink often topped with whipped cream and chocolate shavings.",
+      "price": 3.49,
+      "image": "hot_chocolate.png"
+    },
+    {
+      "id": 5,
+      "name": "Strawberry Shortcake",
+      "description": "A sweet dessert made with layers of sponge cake, fresh strawberries, and whipped cream.",
+      "price": 4.29,
+      "image": "strawberry_shortcake.png"
     }
   ]
 }

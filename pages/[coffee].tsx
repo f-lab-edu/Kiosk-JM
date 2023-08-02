@@ -3,10 +3,9 @@ import productList from "./api/productList.json";
 import Link from "next/link";
 import { buttonVariants } from "@/components/ui/button";
 
-function Product() {
+function Product({ count }) {
   const router = useRouter();
-  console.log(router.query.coffee);
-  console.log(productList.coffees);
+  console.log(router.query);
 
   return (
     <div>
