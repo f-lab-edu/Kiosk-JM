@@ -34,9 +34,9 @@ export default function Home() {
   };
 
   return (
-    <div className="w-[842px] h-[1224px] bg-white rounded-[30px] absolute mx-auto">
+    <div className="absolute mx-auto h-[1224px] w-[842px] rounded-[30px] bg-white">
       <Image
-        className="left-0 top-0 absolute"
+        className="absolute left-0 top-0"
         src="/BackgroundImg.png"
         width={842}
         height={225}

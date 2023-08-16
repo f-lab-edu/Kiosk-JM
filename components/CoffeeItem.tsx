@@ -1,36 +1,36 @@
 import Image from "next/image";
 import Link from "next/link";
-import ButtonIcon from "./ButtonIcon";
+import QuantirySelector from "./QuantitySelector";
 import { useState } from "react";
 
-function CoffeeItem({ id, name, price, count, onPlus, onMinus }) {
+function CoffeeItem({ coffee, count, onPlus, onMinus }) {
   return (
-    <div className="w-[195px] h-[287px] relative mb-4">
-      <Link href={name}>
+    <div className="relative mb-4 h-[287px] w-[195px]">
+      <Link href={coffee.name}>
         <Image
           width={195}
           height={195}
           className="rounded-[20px]"
           src="/americano.png"
-          alt={name}
+          alt={coffee.name}
         />
 
-        <div className="text-black text-xl font-semibold leading-7 mt-[5px] absolute left-[5px]">
-          {name}
+        <div className="absolute left-[5px] mt-[5px] text-xl font-semibold leading-7">
+          {coffee.name}
         </div>
-        <div className="text-black text-opacity-60 text-lg font-semibold leading-7 absolute left-[5px] bottom-[5px]">
+        <div className="absolute bottom-[5px] left-[5px] text-lg font-semibold leading-7 text-opacity-60">
           {new Intl.NumberFormat("en-US", {
             style: "currency",
             currency: "USD",
-          }).format(price)}
+          }).format(coffee.price)}
         </div>
       </Link>
-      <div className="absolute right-[5px] bottom-[5px]">
-        <ButtonIcon
-          onPlus={() => onPlus(id)}
-          onMinus={() => onMinus(id)}
+      <div className="absolute bottom-[5px] right-[5px]">
+        <QuantirySelector
+          onPlus={onPlus}
+          onMinus={onMinus}
           count={count}
-          id={id}
+          coffeeId={coffee.id}
         />
       </div>
     </div>
