@@ -1,12 +1,13 @@
-import Link from "next/link";
-import { Button } from "./ui/button";
-import { useState } from "react";
-import productList from "../pages/api/productList.json";
+import { useState } from "react"
+import Link from "next/link"
+
+import productList from "../pages/api/productList.json"
+import { Button } from "./ui/button"
 
 function Cart({ count }) {
   const totalPrice = productList.coffees.reduce((total, coffee) => {
-    return total + count[coffee.id] * coffee.price;
-  }, 0);
+    return total + count[coffee.id] * coffee.price
+  }, 0)
   return (
     <>
       <div
@@ -34,7 +35,7 @@ function Cart({ count }) {
         </Button>
       </div>
     </>
-  );
+  )
 }
 
-export default Cart;
+export default Cart

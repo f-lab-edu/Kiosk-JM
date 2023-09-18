@@ -1,5 +1,5 @@
-import productList from "../pages/api/productList.json";
-import CoffeeItem from "./CoffeeItem";
+import productList from "../pages/api/productList.json"
+import CoffeeItem from "./CoffeeItem"
 
 function CoffeeList({ count, onPlus, onMinus }) {
   return (
@@ -19,7 +19,7 @@ function CoffeeList({ count, onPlus, onMinus }) {
         ))}
       </div>
     </>
-  );
+  )
 }
 
-export default CoffeeList;
+export default CoffeeList

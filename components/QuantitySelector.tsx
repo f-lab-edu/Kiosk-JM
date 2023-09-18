@@ -1,5 +1,6 @@
-import { Minus, Plus } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Minus, Plus } from "lucide-react"
+
+import { Button } from "@/components/ui/button"
 
 function QuantitySelector({ count, onPlus, onMinus, coffeeId }) {
   return (
@@ -12,6 +13,6 @@ function QuantitySelector({ count, onPlus, onMinus, coffeeId }) {
         <Plus className="h-4 w-4" />
       </Button>
     </div>
-  );
+  )
 }
-export default QuantitySelector;
+export default QuantitySelector

@@ -1,5 +1,6 @@
-import Link from "next/link";
-import { Button } from "./ui/button";
+import Link from "next/link"
+
+import { Button } from "./ui/button"
 
 function Navbar() {
   return (
@@ -35,7 +36,7 @@ function Navbar() {
         </Button>
       </nav>
     </>
-  );
+  )
 }
 
-export default Navbar;
+export default Navbar

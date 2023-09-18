@@ -1,6 +1,7 @@
-import { useRouter } from "next/router";
-import CoffeeItem from "@/components/CoffeeItem";
 import Image from "next/image";
+import { useRouter } from "next/router";
+
+import CoffeeItem from "@/components/CoffeeItem";
 
 function Product() {
   const router = useRouter();
@@ -61,7 +62,10 @@ function Product() {
               alt="americano"
               className="ml-[16px] mt-[14px] rounded-[20px]"
             />
-            <div className="ml-[20px] mt-[7px]  text-xl font-semibold leading-7">
+            <div
+              className="ml-[20px] mt-[7px]  text-xl font-semibold leading-7
+            "
+            >
               Tall
             </div>
           </div>
@@ -76,7 +80,7 @@ function Product() {
               width={160}
               height={160}
               alt="americano"
-              className="ml-[16px] mt-[14px] rounded-[20px]"
+              className="ml-[16px] mt-[14px]  rounded-[20px]"
             />
             <div className="ml-[20px] mt-[7px] text-xl font-semibold leading-7">
               Tall

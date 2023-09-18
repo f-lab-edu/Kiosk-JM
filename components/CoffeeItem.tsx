@@ -1,7 +1,8 @@
-import Image from "next/image";
-import Link from "next/link";
-import QuantirySelector from "./QuantitySelector";
-import { useState } from "react";
+import { useState } from "react"
+import Image from "next/image"
+import Link from "next/link"
+
+import QuantirySelector from "./QuantitySelector"
 
 function CoffeeItem({ coffee, count, onPlus, onMinus }) {
   return (
@@ -34,7 +35,7 @@ function CoffeeItem({ coffee, count, onPlus, onMinus }) {
         />
       </div>
     </div>
-  );
+  )
 }
 
-export default CoffeeItem;
+export default CoffeeItem

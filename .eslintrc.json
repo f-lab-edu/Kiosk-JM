@@ -3,15 +3,16 @@
   "root": true,
   "extends": [
     "next/core-web-vitals",
-    "prettier",
-    "plugin:tailwindcss/recommended"
+    "plugin:tailwindcss/recommended",
+    "prettier"
   ],
-  "plugins": ["tailwindcss"],
+  "plugins": ["tailwindcss", "prettier"],
   "rules": {
     "@next/next/no-html-link-for-pages": "off",
     "react/jsx-key": "off",
     "tailwindcss/no-custom-classname": "off",
-    "tailwindcss/classnames-order": "error"
+    "tailwindcss/classnames-order": "error",
+    "curly": "error"
   },
   "settings": {
     "tailwindcss": {
