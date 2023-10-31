@@ -31,10 +31,22 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 
+interface TodoItem {
+  id: number;
+  todo: string;
+}
+
 function Todo() {
   const [addTodoVisible, setAddTodoVisible] = useState(false);
   const [editTodoVisible, setEditTodoVisible] = useState(true);
-  const [todos, setTodos] = useState([]);
+  const [selectedEditTodoIndex, setSelectedEditTodoIndex] = useState<
+    number | null
+  >(null);
+  const [selectedDeleteTodoIndex, setSelectedDeleteTodoIndex] = useState<
+    number | null
+  >(null);
+  const [todos, setTodos] = useState<TodoItem[]>([]);
+
   const [newTodo, setNewTodo] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
 
@@ -46,11 +58,11 @@ function Todo() {
     setEditTodoVisible(!editTodoVisible);
   };
 
-  const handleTodoInputChange = (e) => {
+  const handleTodoInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodo(e.target.value);
   };
 
-  const handleCreateTodo = (e) => {
+  const handleCreateTodo = (e: React.FormEvent) => {
     e.preventDefault();
     if (newTodo.trim() !== "") {
       setTodos([...todos, { id: Math.random(), todo: newTodo }]);
@@ -59,16 +71,27 @@ function Todo() {
     }
   };
 
-  const handleEditTodo = (e, editedTodo) => {
-    e.preventDefault();
-    const updatedTodos = todos.map((todo) =>
-      todo.id === editedTodo.id ? editedTodo : todo
+  const handleDeleteTodo = () => {
+    setTodos(
+      todos.filter((todo, index) => {
+        console.log(index, selectedDeleteTodoIndex);
+        return index !== selectedDeleteTodoIndex;
+      })
     );
-    setTodos(updatedTodos);
-    toggleEditTodo();
   };
 
-  const handleSearchInputChange = (e) => {
+  const handleEditTodo = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (selectedEditTodoIndex !== null) {
+      const updatedTodos = todos.map((todo, index) =>
+        index === selectedEditTodoIndex ? { ...todo, todo: newTodo } : todo
+      );
+      setTodos(updatedTodos);
+      toggleEditTodo();
+    }
+  };
+
+  const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchQuery(e.target.value);
   };
 
@@ -79,108 +102,95 @@ function Todo() {
   return (
     <AlertDialog>
       <Dialog open={addTodoVisible} onOpenChange={setAddTodoVisible}>
-        <Dialog open={editTodoVisible} onOpenChange={setEditTodoVisible}>
-          <div className="relative mx-auto h-screen max-w-[400px] p-4">
-            <div className=" pt-2">
-              <div className="text-5xl font-extrabold ">TODO LIST</div>
-            </div>
-
-            <div className="mt-6 flex w-full max-w-sm items-center space-x-2">
+        <div className="relative mx-auto h-screen max-w-[400px] p-4">
+          <div className=" pt-2">
+            <div className="text-5xl font-extrabold ">TODO LIST</div>
+          </div>
+          <div className="mt-6 flex w-full max-w-sm items-center space-x-2">
+            <Input
+              placeholder="Search"
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+            />
+            <Button type="submit">Search</Button>
+          </div>
+          <DialogTrigger asChild>
+            <Plus
+              className="absolute bottom-6 right-6 h-10 w-10 rounded-full bg-slate-900 text-white"
+              onClick={toggleAddTodo}
+            ></Plus>
+          </DialogTrigger>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>Add Todo</DialogTitle>
+            </DialogHeader>
+            <form id="createTodo" onSubmit={handleCreateTodo}>
               <Input
-                placeholder="Search"
-                value={searchQuery}
-                onChange={handleSearchInputChange}
+                className="mb-20"
+                placeholder="Type your Todo here"
+                value={newTodo}
+                onChange={handleTodoInputChange}
               />
-              <Button type="submit">Search</Button>
-            </div>
-            <DialogTrigger asChild>
-              <Plus
-                className="absolute bottom-6 right-6 h-10 w-10 rounded-full bg-slate-900 text-white"
-                onClick={toggleAddTodo}
-              ></Plus>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Add Todo</DialogTitle>
-              </DialogHeader>
-              <form id="createTodo" onSubmit={handleCreateTodo}>
-                <Input
-                  className="mb-20"
-                  placeholder="Type your Todo here"
-                  value={newTodo}
-                  onChange={handleTodoInputChange}
-                />
-              </form>
-              <DialogFooter>
-                <Button
-                  form="createTodo"
-                  className="absolute bottom-6 right-6"
-                  type="submit"
-                >
-                  Create
-                </Button>
-              </DialogFooter>
-            </DialogContent>
+            </form>
+            <DialogFooter>
+              <Button
+                form="createTodo"
+                className="absolute bottom-6 right-6"
+                type="submit"
+              >
+                Create
+              </Button>
+            </DialogFooter>
+          </DialogContent>{" "}
+          <ul>
+            {filteredTodos.map((todo, index) => (
+              <li
+                id={String(todo.id)}
+                key={todo.id}
+                className="relative my-7 flex items-center space-x-2"
+              >
+                <Checkbox id={String(todo.id)} />
+                <div className="text-sm font-medium">{todo.todo}</div>
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <MoreHorizontal className="absolute right-0" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="w-10">
+                    <DropdownMenuGroup>
+                      <DropdownMenuItem asChild>
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setEditTodoVisible(true);
+                            setSelectedEditTodoIndex(index);
+                          }}
+                        >
+                          <Edit className="mr-2 h-4 w-4" />
+                          Edit
+                        </button>
+                      </DropdownMenuItem>
 
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Edit Todo</DialogTitle>
-              </DialogHeader>
-              <form id="editTodo" onSubmit={handleEditTodo}>
-                <Input
-                  className="mb-20"
-                  placeholder="Type your Todo here"
-                  value={newTodo}
-                  onChange={handleTodoInputChange}
-                />
-              </form>
-              <DialogFooter>
-                <Button
-                  form="editTodo"
-                  className="absolute bottom-6 right-6"
-                  type="submit"
-                >
-                  Create
-                </Button>
-              </DialogFooter>
-            </DialogContent>
-
-            <ul>
-              {filteredTodos.map((todo) => (
-                <li
-                  id={todo.id}
-                  key={todo.id}
-                  className="relative my-7 flex items-center space-x-2"
-                >
-                  <Checkbox id={todo.id} />
-                  <div className="text-sm font-medium">{todo.todo}</div>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <MoreHorizontal className="absolute right-0" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent className="w-10">
-                      <DropdownMenuGroup>
-                        <DropdownMenuItem asChild>
-                          <DialogTrigger onClick={setEditTodoVisible}>
-                            <Edit className="mr-2 h-4 w-4" />
-                            Edit
-                          </DialogTrigger>
-                        </DropdownMenuItem>
-
-                        <DropdownMenuItem className="text-red-600" asChild>
-                          <AlertDialogTrigger>
+                      <DropdownMenuItem className="text-red-600" asChild>
+                        <AlertDialogTrigger asChild>
+                          <button
+                            type="button"
+                            onClick={() => {
+                              setSelectedDeleteTodoIndex(index);
+                              console.log(index);
+                            }}
+                          >
                             <Delete className="mr-2 h-4 w-4" />
                             Delete
-                          </AlertDialogTrigger>
-                        </DropdownMenuItem>
-                      </DropdownMenuGroup>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Dialog>
+                          </button>
+                        </AlertDialogTrigger>
+                      </DropdownMenuItem>
+                    </DropdownMenuGroup>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </li>
+            ))}
+          </ul>
+        </div>
       </Dialog>
       <AlertDialogContent>
         <AlertDialogHeader>
@@ -192,13 +202,38 @@ function Todo() {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction
-            onClick={() => setTodos(todos.filter((t) => t.id !== todo.id))}
-          >
+          <AlertDialogAction onClick={handleDeleteTodo}>
             Continue
           </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
+      <Dialog open={editTodoVisible} onOpenChange={setEditTodoVisible}>
+        <DialogContent>
+          <DialogHeader>
+            <DialogTitle>Edit Todo</DialogTitle>
+          </DialogHeader>
+          <form id="editTodo" onSubmit={handleEditTodo}>
+            <Input
+              className="mb-20"
+              placeholder="Type your Todo here"
+              value={newTodo}
+              onChange={handleTodoInputChange}
+              defaultValue={
+                selectedEditTodoIndex ? todos[selectedEditTodoIndex].todo : ""
+              }
+            />
+          </form>
+          <DialogFooter>
+            <Button
+              form="editTodo"
+              className="absolute bottom-6 right-6"
+              type="submit"
+            >
+              Create
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </AlertDialog>
   );
 }
