@@ -1,4 +1,4 @@
-import productList from "../pages/api/productList.json";
+import productList from "../pages/api/productList.json"
 
 function DessertList() {
   return (
@@ -11,7 +11,7 @@ function DessertList() {
         </li>
       ))}
     </ul>
-  );
+  )
 }
 
-export default DessertList;
+export default DessertList

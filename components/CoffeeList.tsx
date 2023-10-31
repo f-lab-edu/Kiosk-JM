@@ -1,24 +1,25 @@
-import productList from "../pages/api/productList.json";
+import productList from "../pages/api/productList.json"
+import CoffeeItem from "./CoffeeItem"
 
-function CoffeeList() {
+function CoffeeList({ count, onPlus, onMinus }) {
   return (
     <>
-      {productList.coffees.map((coffee) => (
-        <div className="w-[195px] h-[287px] left-[432px] top-[344px] absolute">
-          <img
-            className="w-[195px] h-[195.99px] left-0 top-0 absolute rounded-[20px]"
-            src={coffee.image}
+      <div className="absolute left-[235px] top-[260px] text-[40px] font-bold leading-[48px]">
+        Coffee
+      </div>
+      <div className="absolute left-[216px] top-[344px] flex flex-wrap justify-between">
+        {productList.coffees.map((coffee) => (
+          <CoffeeItem
+            coffee={coffee}
+            key={coffee.id}
+            count={count}
+            onPlus={onPlus}
+            onMinus={onMinus}
           />
-          <div className="left-[10px] top-[204px] absolute text-black text-xl font-semibold leading-7">
-            {coffee.name}
-          </div>
-          <div className="w-[62px] left-[10px] top-[259px] absolute text-black text-opacity-60 text-lg font-semibold leading-7">
-            {coffee.price}
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </>
-  );
+  )
 }
 
-export default CoffeeList;
+export default CoffeeList
